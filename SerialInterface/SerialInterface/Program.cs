@@ -15,9 +15,9 @@ namespace SerialInterface
         class Program
     {
         
-        public static int Main()
+        public static void Main()
         {
-            SerialPortManager sp = new SerialPortManager();
+            /*   SerialPortManager sp = new SerialPortManager();
             sp.StartListening();
             long counter_prev = 0;
 
@@ -30,7 +30,7 @@ namespace SerialInterface
                     Console.WriteLine(sp.getMessageAsString());
                 }
 
-            }
+           } 
             Console.ReadKey();
             Console.WriteLine("muhaha");
 
@@ -38,6 +38,13 @@ namespace SerialInterface
             Console.ReadKey();
             sp.StopListening();
             return 0;
+            */
+
+
+            SerialInterface serial = new SerialInterface();
+
+            Console.ReadKey();
+            serial.ClosePort();
         }
     }
 }
