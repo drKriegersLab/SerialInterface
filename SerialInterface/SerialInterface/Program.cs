@@ -12,37 +12,40 @@ using System.IO;
 
 namespace SerialInterface
 {
-        class Program
+    class Program
     {
         
         public static void Main()
         {
-            /*   SerialPortManager sp = new SerialPortManager();
-            sp.StartListening();
-            long counter_prev = 0;
 
+            SerialPortInterface serial = new SerialPortInterface();
 
-            while (!Console.KeyAvailable)
+            Console.ReadKey();
+
+            // send signal that indicate the stream of strip RGB codes is begining
+            serial.sendIndicatorOfRGBstream();
+
+            // send RGB codes' stream
+
+            // first 10 is red
+            for (byte i = 0; i < 10; i += 2)
             {
-                if (sp.receivedCounter != counter_prev)
-                {
-                    counter_prev = sp.receivedCounter;
-                    Console.WriteLine(sp.getMessageAsString());
-                }
+                serial.sendRGBcodes(i, Convert.ToByte(i + 1), 50, 0, 0, 50, 0, 0);
+            }
+            
+            // second 10 is green
+            for (byte i = 10; i< 20; i += 2)
+            { 
+                serial.sendRGBcodes(i, Convert.ToByte(i + 1), 0, 50, 0, 0, 50, 0);
+            }
 
-           } 
-            Console.ReadKey();
-            Console.WriteLine("muhaha");
+            // third 10 is blue
+            for (byte i = 20; i < 30; i += 2)
+            {
+                serial.sendRGBcodes(i, Convert.ToByte(i + 1), 0, 0, 50, 0, 0, 50);
+            }
 
-
-            Console.ReadKey();
-            sp.StopListening();
-            return 0;
-            */
-
-
-            SerialInterface serial = new SerialInterface();
-
+            
             Console.ReadKey();
             serial.ClosePort();
         }
